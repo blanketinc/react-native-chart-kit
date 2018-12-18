@@ -9,21 +9,21 @@ import {
 } from 'react-native-svg'
 
 class AbstractChart extends Component {
-  calcScaler = data => (Math.max(...data) - Math.min(...data)) || 1
+  calcScaler = data => (100 - 0) || 1
 
   renderHorizontalLines = config => {
-    const { count, width, height, paddingTop, paddingRight } = config
+    const { count = 1, width, height, paddingTop, paddingRight } = config
     return [...new Array(count)].map((_, i) => {
       return (
         <Line
           key={Math.random()}
-          x1={paddingRight}
-          y1={(height / 4 * i) + paddingTop}
-          x2={width}
-          y2={(height / 4 * i) + paddingTop}
+          x1={paddingRight - 2.5}
+          y1={height - (height / 4) + paddingTop}
+          x2={width - 25}
+          y2={height - (height / 4) + paddingTop}
           stroke={this.props.chartConfig.color(0.2)}
-          strokeDasharray="5, 10"
-          strokeWidth={1}
+          // strokeDasharray="5, 10"
+          strokeWidth={3}
         />
       )
     })
@@ -31,7 +31,7 @@ class AbstractChart extends Component {
 
   renderHorizontalLabels = config => {
     const { count, data, height, paddingTop, paddingRight, yLabelsOffset = 12 } = config
-	var decimalPlaces = (this.props.chartConfig.decimalPlaces !== undefined) ? this.props.chartConfig.decimalPlaces : 2;
+    var decimalPlaces = (this.props.chartConfig.decimalPlaces !== undefined) ? this.props.chartConfig.decimalPlaces : 2;
     return [...new Array(count)].map((_, i) => {
       return (
         <Text
@@ -41,7 +41,7 @@ class AbstractChart extends Component {
           y={(height * 3 / 4) - ((height - paddingTop) / count * i) + 12}
           fontSize={12}
           fill={this.props.chartConfig.color(0.5)}
-        >{count === 1 ? data[0].toFixed(decimalPlaces) : ((this.calcScaler(data) / (count - 1)) * i + Math.min(...data)).toFixed(decimalPlaces)}
+        >{count === 1 ? data[0].toFixed(decimalPlaces) + '%' : ((this.calcScaler(data) / (count - 1)) * i + Math.min(...data)).toFixed(decimalPlaces) + '%'}
         </Text>
       )
     })
@@ -66,18 +66,18 @@ class AbstractChart extends Component {
   }
 
   renderVerticalLines = config => {
-    const { data, width, height, paddingTop, paddingRight } = config
-    return [...new Array(data.length)].map((_, i) => {
+    const { data, width, height, paddingTop, paddingRight, labels } = config
+    return [...new Array(1)].map((_, i) => {
       return (
         <Line
           key={Math.random()}
-          x1={Math.floor((width - paddingRight) / data.length * (i) + paddingRight)}
-          y1={0}
-          x2={Math.floor((width - paddingRight) / data.length * (i) + paddingRight)}
+          x1={Math.floor((width - paddingRight) / 1 * (i) + paddingRight)}
+          y1={10}
+          x2={Math.floor((width - paddingRight) / 1 * (i) + paddingRight)}
           y2={height - (height / 4) + paddingTop}
           stroke={this.props.chartConfig.color(0.2)}
-          strokeDasharray="5, 10"
-          strokeWidth={1}
+          // strokeDasharray="5, 10"
+          strokeWidth={3}
         />
       )
     })
