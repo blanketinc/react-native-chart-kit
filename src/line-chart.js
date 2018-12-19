@@ -158,7 +158,7 @@ class LineChart extends AbstractChart {
 
   render() {
     const paddingTop = 16
-    const paddingRight = 55
+    const paddingRight = 45
     const { width, height, data, withShadow = true, withDots = true, style = {} } = this.props
     const { labels = [] } = data
     const { borderRadius = 0 } = style
@@ -193,7 +193,7 @@ class LineChart extends AbstractChart {
             {this.renderHorizontalLabels({
               ...config,
               count: (Math.min(...data.datasets[0].data) === Math.max(...data.datasets[0].data)) ?
-                1 : 4,
+                1 : 5,
               data: data.datasets[0].data,
               paddingTop,
               paddingRight,
