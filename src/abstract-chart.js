@@ -19,7 +19,7 @@ class AbstractChart extends Component {
           key={Math.random()}
           x1={paddingRight - 2}
           y1={height - (height / 4) + paddingTop}
-          x2={width - 5}
+          x2={width - 7}
           y2={height - (height / 4) + paddingTop}
           stroke={this.props.chartConfig.color(0.7)}
           // strokeDasharray="5, 10"
