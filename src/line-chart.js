@@ -23,7 +23,7 @@ class LineChart extends AbstractChart {
             key={Math.random()}
             cx={paddingRight + (i * (width - paddingRight) / labels.length)}
             cy={((height / 4 * 3 * (1 - ((x - Math.min(...dataset.data)) / this.calcScaler(dataset.data)))) + paddingTop)}
-            r="4"
+            r="2"
             fill={this.props.chartConfig.color(0.7)}
           />)
       })
@@ -193,7 +193,7 @@ class LineChart extends AbstractChart {
             {this.renderHorizontalLabels({
               ...config,
               count: (Math.min(...data.datasets[0].data) === Math.max(...data.datasets[0].data)) ?
-                1 : 5,
+                5 : 5,
               data: data.datasets[0].data,
               paddingTop,
               paddingRight,

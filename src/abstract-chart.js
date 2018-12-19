@@ -19,9 +19,9 @@ class AbstractChart extends Component {
           key={Math.random()}
           x1={paddingRight - 2.5}
           y1={height - (height / 4) + paddingTop}
-          x2={width - 25}
+          x2={width}
           y2={height - (height / 4) + paddingTop}
-          stroke={this.props.chartConfig.color(0.2)}
+          stroke={this.props.chartConfig.color(0.7)}
           // strokeDasharray="5, 10"
           strokeWidth={3}
         />
@@ -72,10 +72,10 @@ class AbstractChart extends Component {
         <Line
           key={Math.random()}
           x1={Math.floor((width - paddingRight) / 1 * (i) + paddingRight)}
-          y1={10}
+          y1={0}
           x2={Math.floor((width - paddingRight) / 1 * (i) + paddingRight)}
           y2={height - (height / 4) + paddingTop}
-          stroke={this.props.chartConfig.color(0.2)}
+          stroke={this.props.chartConfig.color(0.7)}
           // strokeDasharray="5, 10"
           strokeWidth={3}
         />
