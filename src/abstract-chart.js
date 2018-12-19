@@ -17,7 +17,7 @@ class AbstractChart extends Component {
       return (
         <Line
           key={Math.random()}
-          x1={paddingRight - 2.5}
+          x1={paddingRight - 2}
           y1={height - (height / 4) + paddingTop}
           x2={width}
           y2={height - (height / 4) + paddingTop}
